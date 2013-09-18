@@ -1,0 +1,82 @@
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   Theses examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media all and (min-width: 768px) and (max-width: 1001px) {
+  /* Style adjustments for viewports that meet the condition */
+
+}
+
+@media all and (min-width: 0px) and (max-width: 767px) {
+  /* Style adjustments for viewports that meet the condition */
+  
+  .form-group {
+    input[type="text"], input[type="password"], input[type="email"], 
+    input[type="tel"], input[type="number"], input[type="search"], 
+    input[type="url"], input[type="submit"], input[type="button"],
+    button, textarea {
+      width: 100%;
+      @include box-sizing(border-box);
+    }
+  }
+  .alun-button {
+    width: 100%;
+    @include box-sizing(border-box);
+    margin: 5px 0;
+  }
+  .append-button, .prepend-button {
+    .alun-button {
+      width: auto;
+    }
+  }
+
+  .align-form {
+    label {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+    }
+    .form-controls {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      label {
+        float: none;
+      }
+    }
+  }
+
+  .alun-button-group {
+    .alun-button {
+      width: auto;
+    }
+  }
+
+  .alun-pagination {
+    .page {
+      display: none;
+    }
+    .prev {
+      float: left !important;
+    }
+    .next {
+      float: right !important;
+    }
+  }
+
+  .alun-login {
+    width: 100%;
+    margin: 0;
+  }
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}

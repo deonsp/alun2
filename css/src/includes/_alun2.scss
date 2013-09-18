@@ -1,0 +1,749 @@
+/* ==========================================================================
+   Alun-alun Global Styles
+   ========================================================================== */
+
+html, body {
+  background: $bg-global;
+  color: $body-color;
+}
+
+html, body, button, input, select, textarea {
+  font-family: "Source Sans Pro", sans-serif; 
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: $link-color;
+  &:hover {
+  	color: lighten($link-color, 10%);
+  }
+}
+
+a:active, a:hover {
+  outline: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: $heading-color;
+}
+
+h1 {
+  margin: 15px 0;
+  font: 700 2.25em "Montserrat", sans-serif;
+}
+
+h2 {
+  font-size: 1.625em;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.25em;
+  font-weight: 400;
+}
+
+h4 {
+	font-size: 1em;
+	font-weight: 700;
+}
+
+h5 {
+	font-size: 0.9em;
+	font-weight: 700;
+}
+
+h6 {
+	font-size: 0.8em;
+	font-weight: 700;
+}
+
+abbr {
+	cursor: help;
+}
+
+dt {
+	font-weight: 700;
+}
+dd {
+	margin: 0 0 10px 0;
+}
+
+/* ==========================================================================
+   Alun-alun Form Styles
+   ========================================================================== */
+
+.alun-form {
+  margin: 15px 0;
+}
+
+.compact-inline {
+
+  .form-group {
+    @include span-columns(2,10);
+
+    &:nth-child(5n) {
+      @include span-columns(2 omega,10);
+    }
+
+    &:nth-child(5n+1) {
+      clear: left;
+    }
+
+  }
+
+  input[type="text"], input[type="password"], textarea {
+    width: 100%;
+  }
+
+}
+
+.align-form {
+
+  label {
+    @include span-columns(2,10);
+    text-align: right;
+  }
+
+  label.form-checkbox {
+    //width: auto;
+    text-align: left;
+  }
+
+  .form-group {
+    clear: left;
+  }
+
+  .form-controls {
+    @include pre(2,10);
+  }
+}
+
+.form-group {
+
+  margin: 10px 0;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"], input[type="password"], input[type="email"], 
+  input[type="tel"], input[type="number"], input[type="search"], 
+  input[type="url"], textarea {
+    @include box-sizing(border-box);
+    @include border-radius(5px);
+    @include inline-block;
+    // padding: 7px 8px;
+    padding: .4em;
+    // font-size: 0.875em;
+    border: 1px solid $input-border;
+    color: $input-color;
+    @include transition(0.2s linear box-shadow);
+
+    &:focus {
+      outline: 0 none;
+      border: 1px solid $input-border-active;
+      @include box-shadow(0 0 0 1px $input-border-active inset);
+    }
+    &:hover {
+      border: 1px solid darken($input-border,20%);
+    }
+  }
+
+  input[type="text"]:disabled, input[type="password"]:disabled, textarea:disabled {
+    background-color: $input-disabled;
+    color: $input-color-disabled;
+    cursor: not-allowed;
+  }
+
+  textarea {
+    // height: 150px;
+  }
+
+  input[type="checkbox"], input[type="radio"] {
+    margin-right: 5px;
+  }
+
+  input[type="submit"] {
+    @include inline-block;
+    @include box-sizing(border-box);
+    @include border-radius(5px);
+    padding: 8px 15px;
+    background: $submit;
+    border: 1px solid $submit-border;
+    color: $submit-color;
+    font-weight: 700;
+    text-align: center;
+
+    &:hover {
+      background: lighten($submit, 5%);
+    }
+
+    &:active {
+      background: darken($submit, 5%);
+    }
+  }
+
+  .notes {
+    margin-top: 2px;
+    display: block;
+    color: $input-color-note;
+    font-size: 0.75em;
+  }
+
+  .requirement {
+    color: $input-color-requirment;
+  }
+
+  .input-small {
+    width: columns(2,10);
+  }
+
+  .input-normal {
+    width: columns(4,10);
+  }
+
+  .input-large {
+    width: columns(6,10);
+  }
+
+  .input-xlarge {
+    width: columns(8,10);
+  }
+  .input-block {
+    width: 100%;
+  }
+}
+
+.form-group.inline-group {
+  label {
+    margin-right: 10px;
+    @include inline-block;
+  }
+  // input[type="checkbox"], input[type="radio"] {
+
+  // }
+}
+
+
+.append-button {
+  span, button, input[type="button"], input[type="submit"], a {
+    float: left;
+  }
+  input[type="text"], input[type="password"] {
+    @include border-radius(5px 0 0 5px);
+  }
+  .alun-button {
+    margin: 0;
+    border-left-width: 0;
+    @include border-radius(0 5px 5px 0);
+  }
+}
+
+.prepend-button {
+  span, button, input[type="button"], input[type="submit"], a {
+    float: left;
+  }
+  input[type="text"], input[type="password"] {    
+    @include border-radius(0 5px 5px 0);
+  }
+  .alun-button {
+    margin: 0;
+    border-right-width: 0;
+    @include border-radius(5px 0 0 5px);
+  }
+}
+
+input[type="text"].parsley-error, input[type="password"].parsley-error, textarea.parsley-error {
+  border: 1px solid $error-border;
+  @include box-shadow(0 0 0 1px $error-border);
+}
+
+.parsley-error-list {
+  margin: 2px 0 0 0;
+  padding: 0;
+  list-style: none;
+  @include inline-block;
+  color: $error-color;
+  font-size: 0.75em;
+}
+
+/* ==========================================================================
+   Alun-alun Button Styles
+   ========================================================================== */
+
+.alun-button {
+  @include border-radius(5px);
+  @include inline-block;
+  @include transition(0.1s linear all);
+  border: 1px solid $button-border;
+  background-color: $button-bg;
+  color: $button-color;
+  padding: .4em 1.3em;
+  // padding: 5px 1.3em;
+  margin: 5px;
+  line-height: normal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  &:hover {
+    // background-color: $button-bg-hover;
+    color: $button-color;
+    background-color: lighten($button-bg,5%);
+  }
+
+  &:active {
+    // background-color: $button-bg-active;
+    color: $button-color;
+    background-color: darken($button-bg,5%);
+    @include box-shadow(0 1px 2px $black03 inset);
+  }
+}
+
+.alun-button.xsmall {
+  font-size: 70%;
+}
+.alun-button.small {
+  font-size: 85%;
+}
+.alun-button.large {
+  font-size: 110%;
+}
+.alun-button.xlarge {
+  font-size: 125%;
+}
+
+.alun-button.blue {
+  background-color: $button-blue;
+  color: $white;
+  border: 1px solid darken($button-blue,10%);
+
+  &:hover {
+    background-color: lighten($button-blue,5%);
+  }
+  &:active {
+    background-color: darken($button-blue,5%);
+  }
+}
+
+.alun-button.green {
+  background-color: $button-green;
+  color: $white;
+  border: 1px solid darken($button-green,10%);
+
+  &:hover {
+    background-color: lighten($button-green,5%);
+  }
+  &:active {
+    background-color: darken($button-green,5%);
+  }
+}
+
+.alun-button.orange {
+  background-color: $button-orange;
+  color: $white;
+  border: 1px solid darken($button-orange,10%);
+
+  &:hover {
+    background-color: lighten($button-orange,5%);
+  }
+  &:active {
+    background-color: darken($button-orange,5%);
+  }
+}
+
+.alun-button.red {
+  background-color: $button-red;
+  color: $white;
+  border: 1px solid darken($button-red,10%);
+
+  &:hover {
+    background-color: lighten($button-red,5%);
+  }
+  &:active {
+    background-color: darken($button-red,5%);
+  }
+}
+
+.alun-button[disabled="disabled"] {
+  cursor: not-allowed;
+  background-color: $button-disable-bg;
+  border-color: $button-disable-border;
+  color: $button-disable-color;
+
+  &:active {
+    @include box-shadow(none);
+  }
+}
+
+.alun-button.blue[disabled="disabled"] {
+  background-color: lighten($button-blue,15%);
+  color: $white;
+  border: 1px solid lighten($button-blue,10%);
+}
+
+.alun-button.green[disabled="disabled"] {
+  background-color: lighten($button-green,15%);
+  color: $white;
+  border: 1px solid lighten($button-green,10%);
+}
+
+.alun-button.orange[disabled="disabled"] {
+  background-color: lighten($button-orange,15%);
+  color: $white;
+  border: 1px solid lighten($button-orange,10%);
+}
+
+.alun-button.red[disabled="disabled"] {
+  background-color: lighten($button-red,15%);
+  color: $white;
+  border: 1px solid lighten($button-red,10%);
+}
+
+.alun-button-group {
+  @include inline-block;
+  .alun-button {
+    @include border-radius(0);
+    margin: 0;
+    float: left;
+    border-right-width: 0;
+
+    &:first-child {
+      @include border-radius(5px 0 0 5px);
+    }
+    &:last-child {
+      @include border-radius(0 5px 5px 0);
+      border-right-width: 1px;
+    }
+  }
+}
+
+.alun-button-toolbar {
+  .alun-button-group {
+    margin-right: 10px;
+  }
+}
+
+/* ==========================================================================
+   Alun-alun Tables Styles
+   ========================================================================== */
+
+.alun-table {
+  width: 100%;
+  background: none;
+  th {
+    border-top: 1px solid $table-border;
+    border-bottom: 2px solid $table-border;
+    padding: 8px 10px;
+    font-size: 1.25em;
+    font-weight: 600;
+    text-align: left;
+  }
+  td {
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid $table-border;
+  }
+  tfoot {
+    font-size: 1.25em;
+    font-weight: 400;
+  }
+  .red {
+    background-color: $bg-red;
+    color: $white;
+  }
+  .blue {
+    background-color: $bg-blue;
+    color: $white;
+  }
+  .green {
+    background-color: $bg-green;
+    color: $white;
+  }
+  .orange {
+    background-color: $bg-orange;
+    color: $white;
+  }
+}
+
+.alun-table.alternate {
+  tbody tr {
+    &:nth-child(even) {
+      background-color: $table-bg-even;
+    }
+  }
+}
+
+.alun-table.hover {
+  tbody tr {
+    &:hover {
+      background-color: $table-hover;
+    }
+  }
+}
+
+.alun-table.bordered {
+  border-collapse: separate;
+  border: 1px solid $table-border;
+  @include border-radius(5px);
+
+  th {
+    border-left: 1px solid $table-border;
+    border-top: 0 none;
+
+    &:first-child {
+      border-left: 0 none;
+    }
+  }
+
+  td {
+    border-left: 1px solid $table-border;
+    &:first-child {
+      border-left: 0 none;
+    }
+  }
+}
+
+/* ==========================================================================
+   Alun-alun Alerts Styles
+   ========================================================================== */
+
+.alun-alert {
+  position: relative;
+  display: block;
+  margin: 1em 0;
+}
+
+.alun-alert.basic {
+   @include border-radius(50em);
+   padding: .5em 1.3em;
+   color: $white;
+   p {
+    margin: 0;
+  }
+}
+
+.alun-alert.block {
+  @include border-radius(5px);
+  border: 1px solid $alert-border;
+  background-color: $white;
+  h4 {
+    @include border-radius(4px 4px 0 0);
+    color: $white;
+    margin: 0;
+    padding: .5em 1.3em;
+  }
+  p {
+    margin: .5em 1.3em;
+  }
+}
+
+.alun-alert.block.warning h4 {
+  background-color: $bg-orange;
+}
+
+.alun-alert.block.error h4 {
+  background-color: $bg-red;
+}
+
+.alun-alert.block.success h4 {
+  background-color: $bg-green;
+}
+
+.alun-alert.block.info h4 {
+  background-color: $bg-blue;
+}
+
+.alun-alert.basic.warning {
+  background-color: $bg-orange;
+}
+
+.alun-alert.basic.error {
+  background-color: $bg-red;
+}
+
+.alun-alert.basic.success {
+  background-color: $bg-green;
+}
+
+.alun-alert.basic.info {
+  background-color: $bg-blue;
+}
+
+.alun-dismiss {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  background: none;
+  border: 0 none;
+
+  &:before {
+    content: url(../images/icon_dismiss.png);
+    @include inline-block;
+  }
+}
+
+/* ==========================================================================
+   Alun-alun Navigation Styles
+   ========================================================================== */
+
+.alun-pagination {
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid $pagination-top-border;
+  padding: 1em 0;
+  .page-button, .page {
+    @include inline-block;
+  }
+  .page {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid $pagination-border;
+    @include border-radius(5px);
+    background: $pagination-bg;
+  }
+  .page-button {
+    border: 1px solid $pagination-border;
+    background: $pagination-bg;
+    @include border-radius(5px);
+    padding: .4em 1em;
+  }
+  li {
+    @include inline-block;
+    border-right: 1px solid $pagination-border;
+    margin-left: -3px;
+    a {
+      padding: .4em;
+      width: 30px;
+    }
+    &:first-child {
+      margin-left: 0;
+      a {
+        @include border-radius(5px 0 0 5px);
+      }
+    }
+    &:last-child {      
+      border-right-width: 0;
+      a {
+        @include border-radius(0 5px 5px 0);
+      }
+    }
+  }
+  a {
+    display: block;
+    
+    font-weight: 700;
+    color: $pagination-color;
+
+    &:hover {
+      background-color: lighten($pagination-bg,5%);
+    }
+    &:active {
+      background-color: darken($pagination-bg,5%);
+      @include box-shadow(0 1px 2px $black03 inset);
+    }
+  }
+  
+  .active {
+    padding: .4em 1.3em;
+    font-weight: 700;
+    color: $white;
+    background-color: $pagination-active;
+    @include box-shadow(0 1px 2px $black inset);
+  }
+  .prev {
+    margin-right: 15px;
+  }
+  .next {
+    margin-left: 15px;
+  }
+}
+
+.alun-pagination.left-nav {
+  .prev, .next {
+    float: left;
+  }
+  .prev {
+    margin-right: 5px;
+  }
+  .next {
+    margin-left: 5px;
+  }
+  .page {
+    float: right;
+  }
+}
+
+.alun-pagination.right-nav {
+  .prev, .next {
+    float: right;
+  }
+  .prev {
+    margin-right: 5px;
+  }
+  .next {
+    margin-left: 5px;
+  }
+  .page {
+    float: left;
+  }
+}
+
+.alun-pagination.simple-nav {
+  .prev {
+    float: left;
+  }
+  .next {
+    float: right;
+  }
+}   
+
+/* ==========================================================================
+   Alun-alun Grids Styles
+   ========================================================================== */
+
+.alun-grid {
+
+}
+
+@for $i from 1 through 12 {
+  .grid-#{$i} {
+    @include span-columns($i,12);
+  }
+}
+
+@for $i from 1 through 11 {
+  .pre-#{$i} {
+    @include pre($i);
+  }
+}
+
+.omega {
+ margin-right: 0;
+}
+
+
+/* ==========================================================================
+   Alun-alun Templates Styles
+   ========================================================================== */
+
+.alun-login {
+  border: 1px solid $border-box;
+  @include border-radius(5px);
+  @include box-sizing(border-box);
+  background: $white;
+  padding: 30px;
+
+  h3 {
+    text-align: center;
+    margin: 0;
+  }
+}
+
+
+
+
+
